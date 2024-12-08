@@ -1,0 +1,5 @@
+services:
+  web:
+    external_links:
+      - "ddev-router:api-gateway-users.ddev.site"
+      - "ddev-router:api-gateway-orders.ddev.site"
