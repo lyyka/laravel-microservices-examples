@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "49afa6c9-e85c-4fed-a7d8-613a9aa4938e",
+		"name": "NAIS",
+		"description": "Each folder in this collections is named after ther project in the repository.\n\nGlobal Variables on collection can be set and are used in all folders.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19735557"
+	},
+	"item": [
+		{
+			"name": "api-gateway",
+			"item": [
+				{
+					"name": "Gateway Request",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_GATEWAY}}/api/users-orders",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"api",
+								"users-orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cqrs",
+			"item": [
+				{
+					"name": "Push User Data",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{CQRS_USERS}}/api/users",
+							"host": [
+								"{{CQRS_USERS}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Push Order Data",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{CQRS_ORDERS}}/api/orders",
+							"host": [
+								"{{CQRS_ORDERS}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Average",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{CQRS_HANDLER}}/api/orders/average",
+							"host": [
+								"{{CQRS_HANDLER}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"average"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{CQRS_HANDLER}}/api/users/count",
+							"host": [
+								"{{CQRS_HANDLER}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_GATEWAY",
+			"value": "https://api-gateway-gateway.ddev.site",
+			"type": "string"
+		},
+		{
+			"key": "CQRS_USERS",
+			"value": "https://cqrs-users.ddev.site",
+			"type": "string"
+		},
+		{
+			"key": "CQRS_ORDERS",
+			"value": "https://cqrs-orders.ddev.site",
+			"type": "string"
+		},
+		{
+			"key": "CQRS_HANDLER",
+			"value": "https://cqrs-handler.ddev.site",
+			"type": "string"
+		}
+	]
+}
