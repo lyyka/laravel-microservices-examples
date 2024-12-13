@@ -5,14 +5,13 @@ namespace App\Jobs;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
-class ProduceOrderData implements ShouldQueue
+class MakeOrder implements ShouldQueue
 {
     use Queueable;
 
     public function __construct(
-        private array &$data
+        private readonly array $data
     )
     {
-        $data['type'] = 'order_data';
     }
 }

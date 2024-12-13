@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ProduceOrderData;
+use App\Jobs\MakeOrder;
 use Illuminate\Http\JsonResponse;
 
 class OrdersController extends Controller
 {
     public function __invoke(): JsonResponse
     {
-        ProduceOrderData::dispatch([
+        MakeOrder::dispatch([
             'uuid' => fake()->uuid(),
             'amount' => fake()->numberBetween(1500, 10000),
         ]);

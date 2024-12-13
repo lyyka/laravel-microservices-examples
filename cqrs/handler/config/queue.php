@@ -47,7 +47,6 @@ return [
             'options' => [
                 'queue' => [
                     'reroute_failed' => true,
-                    'job' => \App\Jobs\RabbitMQHandlerJob::class
                 ],
             ],
         ],
