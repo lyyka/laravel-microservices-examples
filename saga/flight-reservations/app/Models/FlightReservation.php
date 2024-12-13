@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class FlightReservation extends Model
 {
-    protected $fillable = ['from', 'to'];
+    protected $fillable = ['saga_id', 'from', 'to'];
 }

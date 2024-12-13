@@ -12,14 +12,14 @@ class FlightReservationCompleted implements ShouldQueue
     use Queueable;
 
     public function __construct(
-        private readonly int $sagaEventId,
+        private readonly string $sagaEventId,
     )
     {
     }
 
     public function handle(): void
     {
-        SagaEvent::where('id', $this->sagaEventId)->update([
+        SagaEvent::where('uuid', $this->sagaEventId)->update([
             'flight_reservation_status' => SagaStatus::COMPLETED
         ]);
     }

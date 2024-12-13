@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SagaEvent extends Model
 {
-    protected $fillable = ['hotel_reservation_status', 'flight_reservation_status'];
+    protected $fillable = ['uuid', 'hotel_reservation_status', 'flight_reservation_status'];
 
     protected function casts()
     {

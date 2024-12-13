@@ -8,6 +8,7 @@ use App\Models\SagaEvent;
 use App\Services\Enums\SagaStatus;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 
 class SagaController extends Controller
 {
@@ -19,12 +20,13 @@ class SagaController extends Controller
     public function store(): Response
     {
         $sagaEvent = SagaEvent::create([
+            'uuid' => Str::uuid()->toString(),
             'hotel_reservation_status' => SagaStatus::PENDING,
             'flight_reservation_status' => SagaStatus::PENDING,
         ]);
 
-        MakeHotelReservation::dispatch($sagaEvent->id, fake()->company())->onQueue('hotel-reservation-queue');
-        MakeFlightReservation::dispatch($sagaEvent->id, fake()->city(), fake()->city())->onQueue('flight-reservation-queue');
+        MakeHotelReservation::dispatch($sagaEvent->uuid, fake()->company())->onQueue('hotel-reservation-queue');
+        MakeFlightReservation::dispatch($sagaEvent->uuid, fake()->city(), fake()->city())->onQueue('flight-reservation-queue');
 
         return response('Saga started!');
     }

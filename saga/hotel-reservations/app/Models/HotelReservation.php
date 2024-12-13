@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class HotelReservation extends Model
 {
-    protected $fillable = ['hotel_name'];
+    protected $fillable = ['saga_id', 'hotel_name'];
 }

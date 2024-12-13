@@ -10,7 +10,7 @@ class MakeFlightReservation implements ShouldQueue
     use Queueable;
 
     public function __construct(
-        private readonly int $sagaEventId,
+        private readonly string $sagaEventId,
         private readonly string $from,
         private readonly string $to,
     )

@@ -11,7 +11,7 @@ class MakeFlightReservation implements ShouldQueue
     use Queueable;
 
     public function __construct(
-        private readonly int $sagaEventId,
+        private readonly string $sagaEventId,
         private readonly string $from,
         private readonly string $to,
     )
@@ -21,10 +21,11 @@ class MakeFlightReservation implements ShouldQueue
     public function handle(): void
     {
         FlightReservation::create([
+            'saga_id' => $this->sagaEventId,
             'from' => $this->from,
             'to' => $this->to,
         ]);
 
-        FlightReservationCompleted::dispatch($this->sagaEventId, 'flight')->onQueue('saga-response-queue');
+        FlightReservationCompleted::dispatch($this->sagaEventId)->onQueue('saga-response-queue');
     }
 }

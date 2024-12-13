@@ -12,7 +12,7 @@ class FlightReservationCompleted implements ShouldQueue
     use Queueable;
 
     public function __construct(
-        private readonly int $sagaEventId,
+        private readonly string $sagaEventId,
     )
     {
     }

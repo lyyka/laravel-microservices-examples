@@ -11,7 +11,7 @@ class MakeHotelReservation implements ShouldQueue
     use Queueable;
 
     public function __construct(
-        private readonly int $sagaEventId,
+        private readonly string $sagaEventId,
         private readonly string $hotelName,
     )
     {
@@ -20,9 +20,10 @@ class MakeHotelReservation implements ShouldQueue
     public function handle(): void
     {
         HotelReservation::create([
+            'saga_id' => $this->sagaEventId,
             'hotel_name' => $this->hotelName,
         ]);
 
-        HotelReservationCompleted::dispatch($this->sagaEventId, 'hotel')->onQueue('saga-response-queue');
+        HotelReservationCompleted::dispatch($this->sagaEventId)->onQueue('saga-response-queue');
     }
 }
