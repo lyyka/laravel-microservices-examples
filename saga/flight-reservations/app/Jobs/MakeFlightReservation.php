@@ -25,6 +25,6 @@ class MakeFlightReservation implements ShouldQueue
             'to' => $this->to,
         ]);
 
-        ReservationCompleted::dispatch($this->sagaEventId, 'flight')->onQueue('saga-response-queue');
+        FlightReservationCompleted::dispatch($this->sagaEventId, 'flight')->onQueue('saga-response-queue');
     }
 }

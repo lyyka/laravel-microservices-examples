@@ -23,6 +23,6 @@ class MakeHotelReservation implements ShouldQueue
             'hotel_name' => $this->hotelName,
         ]);
 
-        ReservationCompleted::dispatch($this->sagaEventId, 'hotel')->onQueue('saga-response-queue');
+        HotelReservationCompleted::dispatch($this->sagaEventId, 'hotel')->onQueue('saga-response-queue');
     }
 }
