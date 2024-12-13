@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Models\HotelReservation;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Throwable;
 
 class MakeHotelReservation implements ShouldQueue
 {
@@ -19,11 +20,15 @@ class MakeHotelReservation implements ShouldQueue
 
     public function handle(): void
     {
-        HotelReservation::create([
-            'saga_id' => $this->sagaEventId,
-            'hotel_name' => $this->hotelName,
-        ]);
+        try {
+            HotelReservation::create([
+                'saga_id' => $this->sagaEventId,
+                'hotel_name' => $this->hotelName,
+            ]);
 
-        HotelReservationCompleted::dispatch($this->sagaEventId)->onQueue('saga-response-queue');
+            HotelReservationCompleted::dispatch($this->sagaEventId)->onQueue('saga-response-queue');
+        } catch (Throwable) {
+            FailedHotelReservation::dispatch($this->sagaEventId)->onQueue('saga-response-queue');
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Models\FlightReservation;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Throwable;
 
 class MakeFlightReservation implements ShouldQueue
 {
@@ -20,12 +21,16 @@ class MakeFlightReservation implements ShouldQueue
 
     public function handle(): void
     {
-        FlightReservation::create([
-            'saga_id' => $this->sagaEventId,
-            'from' => $this->from,
-            'to' => $this->to,
-        ]);
+        try {
+            FlightReservation::create([
+                'saga_id' => $this->sagaEventId,
+                'from' => $this->from,
+                'to' => $this->to,
+            ]);
 
-        FlightReservationCompleted::dispatch($this->sagaEventId)->onQueue('saga-response-queue');
+            FlightReservationCompleted::dispatch($this->sagaEventId)->onQueue('saga-response-queue');
+        } catch (Throwable) {
+            FailedFlightReservation::dispatch($this->sagaEventId)->onQueue('saga-response-queue');
+        }
     }
 }
