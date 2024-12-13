@@ -141,6 +141,127 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "saga",
+			"item": [
+				{
+					"name": "start saga",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SAGA_ORCHESTRATOR}}/api/saga",
+							"host": [
+								"{{SAGA_ORCHESTRATOR}}"
+							],
+							"path": [
+								"api",
+								"saga"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get sagas",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SAGA_ORCHESTRATOR}}/api/saga",
+							"host": [
+								"{{SAGA_ORCHESTRATOR}}"
+							],
+							"path": [
+								"api",
+								"saga"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hotel reservations",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SAGA_HOTELS}}/api/reservations",
+							"host": [
+								"{{SAGA_HOTELS}}"
+							],
+							"path": [
+								"api",
+								"reservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flight reservations",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SAGA_FLIGHTS}}/api/reservations",
+							"host": [
+								"{{SAGA_FLIGHTS}}"
+							],
+							"path": [
+								"api",
+								"reservations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
@@ -184,6 +305,21 @@
 		{
 			"key": "CQRS_HANDLER",
 			"value": "https://cqrs-handler.ddev.site",
+			"type": "string"
+		},
+		{
+			"key": "SAGA_ORCHESTRATOR",
+			"value": "https://saga-orchestrator.ddev.site",
+			"type": "string"
+		},
+		{
+			"key": "SAGA_HOTELS",
+			"value": "https://saga-hotel-reservations.ddev.site",
+			"type": "string"
+		},
+		{
+			"key": "SAGA_FLIGHTS",
+			"value": "https://saga-flight-reservations.ddev.site",
 			"type": "string"
 		}
 	]
