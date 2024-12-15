@@ -143,6 +143,101 @@
 			]
 		},
 		{
+			"name": "event-sourcing",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{EVENT_SOURCING_SOURCE}}/api/create-user",
+							"host": [
+								"{{EVENT_SOURCING_SOURCE}}"
+							],
+							"path": [
+								"api",
+								"create-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{EVENT_SOURCING_SOURCE}}/api/list-events",
+							"host": [
+								"{{EVENT_SOURCING_SOURCE}}"
+							],
+							"path": [
+								"api",
+								"list-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{EVENT_SOURCING_SOURCE}}/api/list-users",
+							"host": [
+								"{{EVENT_SOURCING_SOURCE}}"
+							],
+							"path": [
+								"api",
+								"list-users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clear database",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{EVENT_SOURCING_SOURCE}}/api/clear-database",
+							"host": [
+								"{{EVENT_SOURCING_SOURCE}}"
+							],
+							"path": [
+								"api",
+								"clear-database"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rebuild from events",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{EVENT_SOURCING_SOURCE}}/api/rebuild-from-events",
+							"host": [
+								"{{EVENT_SOURCING_SOURCE}}"
+							],
+							"path": [
+								"api",
+								"rebuild-from-events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "saga",
 			"item": [
 				{
@@ -320,6 +415,11 @@
 		{
 			"key": "SAGA_FLIGHTS",
 			"value": "https://saga-flight-reservations.ddev.site",
+			"type": "string"
+		},
+		{
+			"key": "EVENT_SOURCING_SOURCE",
+			"value": "https://event-sourcing-source-service.ddev.site",
 			"type": "string"
 		}
 	]
