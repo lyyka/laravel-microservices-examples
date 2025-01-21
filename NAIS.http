@@ -1,0 +1,85 @@
+# NAIS
+
+###
+# group: api-gateway
+# @name API_GATEWAY
+GET {{API_GATEWAY}}/api/users-orders
+Accept: application/json
+
+###
+# group: cqrs
+# @name CQRS_PUSH_USER_DATA
+GET {{CQRS_USERS}}/api/users
+Accept: application/json
+
+###
+# group: cqrs
+# @name CQRS_PUSH_ORDER_DATA
+GET {{CQRS_ORDERS}}/api/orders
+Accept: application/json
+
+###
+# group: cqrs
+# @name CQRS_ORDER_AVERAGE
+GET {{CQRS_HANDLER}}/api/orders/average
+Accept: application/json
+
+###
+# group: cqrs
+# @name CQRS_USERS_COUNT
+GET {{CQRS_HANDLER}}/api/users/count
+Accept: application/json
+
+###
+# group: event-sourcing
+# @name EVENT_SOURCING_CREATE_USER
+POST {{EVENT_SOURCING_SOURCE}}/api/create-user
+Accept: application/json
+
+###
+# group: event-sourcing
+# @name EVENT_SOURCING_LIST_EVENTS
+GET {{EVENT_SOURCING_SOURCE}}/api/list-events
+Accept: application/json
+
+###
+# group: event-sourcing
+# @name EVENT_SOURCING_LIST_USERS
+GET {{EVENT_SOURCING_SOURCE}}/api/list-users
+Accept: application/json
+
+###
+# group: event-sourcing
+# @name EVENT_SOURCING_CLEAR_DATABASE
+DELETE {{EVENT_SOURCING_SOURCE}}/api/clear-database
+Accept: application/json
+
+###
+# group: event-sourcing
+# @name EVENT_SOURCING_REBUILD_FROM_EVENTS
+POST {{EVENT_SOURCING_SOURCE}}/api/rebuild-from-events
+Accept: application/json
+
+###
+# group: saga
+# @name SAGA_ORCHESTRATOR_START_SAGA
+POST {{SAGA_ORCHESTRATOR}}/api/saga
+Accept: application/json
+
+###
+# group: saga
+# @name SAGA_ORCHESTRATOR_LIST_SAGAS
+GET {{SAGA_ORCHESTRATOR}}/api/saga
+Accept: application/json
+
+###
+# group: saga
+# @name SAGA_ORCHESTRATOR_HOTEL_RESERVATIONS
+GET {{SAGA_HOTELS}}/api/reservations
+Accept: application/json
+
+###
+# group: saga
+# @name SAGA_ORCHESTRATOR_FLIGHT_RESERVATIONS
+GET {{SAGA_FLIGHTS}}/api/reservations
+Accept: application/json
